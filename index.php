@@ -2,6 +2,14 @@
     if (isset($_GET['status']) && $_GET['status'] === 'sucesso') {
         echo "Cadastro realizado com sucesso!";
     }
+
+    if (isset($_GET['erro'])) {
+        if ($_GET['erro'] === 'senha') {
+            echo "Senha incorreta!";
+        }       elseif ($_GET['erro'] === 'usuario') {
+            echo "Usuário não encontrado!";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +21,7 @@
 </head>
 <body>
 
-    <form action="login.php">
+    <form action="login.php" method="POST">
         <input type="email" name="email" id="email">
         <input type="password" name="password" id="password">
         <input type="submit" value="Entrar">
