@@ -1,10 +1,11 @@
 <?php
+require_once 'users.php';
+
 $nome = $_POST['nome'];
 $email = $_POST['email'];
-$password = $_POST['password'];
-//Adicionar senha hash
-//Fazer conexão com o banco de dados
-//Persistir no banco de dados
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+createUser($nome, $email, $password);
 
 header("Location: index.php?status=sucesso");
 exit;
