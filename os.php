@@ -1,13 +1,13 @@
 <?php
 require_once 'db.php';
 
-function createOs($titulo, $descricao, $userId) {
+function createOs($titulo, $descricao, $clienteId) {
     $db = conn();
 
-    $sql = "INSERT INTO os (titulo, descricao, user_id) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO os (titulo, descricao, cliente_id) VALUES (?, ?, ?)";
     $stmt = $db->prepare($sql);
 
-    return $stmt->execute([$titulo, $descricao, $userId]);
+    return $stmt->execute([$titulo, $descricao, $clienteId]);
 }
 
 function getAllOs() {
