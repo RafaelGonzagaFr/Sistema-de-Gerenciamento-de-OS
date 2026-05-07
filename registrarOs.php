@@ -3,9 +3,9 @@ require_once 'os.php';
 
 $titulo = $_POST['titulo'];
 $descricao = $_POST['descricao'];
-$userId = 1;
+$clienteId = 1;
 
-createOs($titulo, $descricao, $userId);
+createOs($titulo, $descricao, $clienteId);
 
 header("Location: dashboard.php?status=os_criada");
 exit;
