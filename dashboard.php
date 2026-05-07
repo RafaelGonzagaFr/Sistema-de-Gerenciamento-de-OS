@@ -30,6 +30,8 @@ if (!isset($_SESSION['user_id'])) {
         <input type="submit" value=Registrar nova OS">
     </form>
 
+    <a href="clientes.php">Registrar cliente</a>
+
     <table border="1">
         <tr>
             <th>ID</th>
