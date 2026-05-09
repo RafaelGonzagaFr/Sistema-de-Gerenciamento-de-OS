@@ -1,14 +1,17 @@
 <?php
 require_once "os.php";
+require_once 'cliente.php';
 
 session_start();
 
-$ordens = getAllOs();
+$ordens = getAllOsWithClientName();
 // verifica se está logado
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php?erro=nao_autorizado");
     exit;
 }
+
+$clientes = getAllClientes();
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +30,15 @@ if (!isset($_SESSION['user_id'])) {
     <form action="registrarOs.php" method="POST">
         <input type="text" name="titulo" id="titulo" placeholder="Título">
         <input type="text" name="descricao" id="descricao" placeholder="Descrição">
+        <select name="cliente_id" required>
+        <option value="">Selecione um cliente</option>
+        <?php foreach($clientes as $cliente): ?>
+            <option value="<?= $cliente['id'] ?>">
+                <?= htmlspecialchars($cliente['nome']) ?>
+            </option>
+        <?php endforeach; ?>
+
+    </select>
         <input type="submit" value=Registrar nova OS">
     </form>
 
@@ -38,6 +50,7 @@ if (!isset($_SESSION['user_id'])) {
             <th>Título</th>
             <th>Descrição</th>
             <th>Status</th>
+            <th>Cliente</th>
             <th>Data</th>
         </tr>
         <?php foreach ($ordens as $os): ?>
@@ -46,6 +59,7 @@ if (!isset($_SESSION['user_id'])) {
                 <td><?= $os['titulo'] ?></td>
                 <td><?= $os['descricao'] ?></td>
                 <td><?= $os['status'] ?></td>
+                <td><?= $os['cliente_nome'] ?></td>
                 <td><?= $os['created_at'] ?></td>
             </tr>
         <?php endforeach; ?>
