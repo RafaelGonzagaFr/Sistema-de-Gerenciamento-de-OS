@@ -3,7 +3,7 @@ require_once 'os.php';
 
 $titulo = $_POST['titulo'];
 $descricao = $_POST['descricao'];
-$clienteId = 1;
+$clienteId = $_POST['cliente_id'];;
 
 createOs($titulo, $descricao, $clienteId);
 
