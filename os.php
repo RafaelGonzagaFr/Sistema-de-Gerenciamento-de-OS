@@ -23,12 +23,16 @@ function getAllOs() {
 function getAllOsWithClientName() {
     $db = conn();
 
-    $sql = "SELECT os.id,
-            os.titulo,
-            os.descricao,
-            os.status,
-            os.created_at,
-            clientes.nome AS cliente_nome FROM os INNER JOIN clientes on cliente_id = os.cliente_id";
+    $sql = "SELECT 
+                os.id,
+                os.titulo,
+                os.descricao,
+                os.status,
+                os.created_at,
+                clientes.nome AS cliente_nome
+            FROM os
+                INNER JOIN clientes 
+                    ON clientes.id = os.cliente_id;";
     $stmt = $db->prepare($sql);
     $stmt->execute();
 
