@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
         <input type="email" name="email" id="email" placeholder="E-mail">
         <input type="text" name="documento" id="documento" placeholder="Documento">
         <input type="text" name="telefone" id="telefone" placeholder="Telefone">
-        <input type="text" name="enedereco" id="endereco" placeholder="Endereço">
+        <input type="text" name="endereco" id="endereco" placeholder="Endereço">
         <input type="submit" value=Registrar novo cliente">
     </form>
     
